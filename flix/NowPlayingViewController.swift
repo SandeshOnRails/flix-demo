@@ -19,11 +19,15 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
     var refreshControl: UIRefreshControl!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        activityIndicator.startAnimating()
         
         
         refreshControl = UIRefreshControl()
