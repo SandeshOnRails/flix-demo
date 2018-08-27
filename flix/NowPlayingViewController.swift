@@ -17,18 +17,36 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
     var movies:[[String:Any]] = []
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-            tableview.rowHeight = 250
-        
-            tableview.dataSource = self
         
         
+        refreshControl = UIRefreshControl()
+        
+        refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
+        
+        tableview.rowHeight = 250
+
+        tableview.insertSubview(refreshControl, at:0)
+        tableview.dataSource = self
+
+           fetchNowPlaying()
         
         
+    }
+    
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        
+        fetchNowPlaying()
+    }
+    
+    
+    func fetchNowPlaying () {
         
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=3ca4232e03c4d16ac675e3a84a6128ad")!
         
@@ -44,7 +62,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
                 
                 print(error.localizedDescription)
             }
-            
+                
             else if let data = data {
                 
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
@@ -53,11 +71,11 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
                 
                 self.movies = movies
                 self.tableview.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
         
         task.resume()
-        
         
     }
     
