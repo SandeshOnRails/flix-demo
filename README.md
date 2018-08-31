@@ -35,8 +35,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src="https://imgflip.com/gif/2gx4x0" width="40" height="40" />
-
+<a href="https://imgflip.com/gif/2gx4x0"><img src="https://i.imgflip.com/2gx4x0.gif" title="made at imgflip.com"/></a>
 
 
 
