@@ -49,6 +49,16 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         fetchNowPlaying()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let cell = sender as! UITableViewCell
+        let indexPath = tableview.indexPath(for: cell)
+        let movie = movies[(indexPath?.row)!]
+        
+        let detailView = segue.destination as! DetailViewController
+        detailView.movie = movie
+    }
+    
     
     func fetchNowPlaying () {
         
