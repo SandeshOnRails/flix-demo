@@ -57,7 +57,7 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
     
     func fetchData () {
         
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=3ca4232e03c4d16ac675e3a84a6128ad")!
+        let url = URL(string: "https://api.themoviedb.org/3/movie/297762/similar?api_key=3ca4232e03c4d16ac675e3a84a6128ad&language=en-US&page=1")!
         
         let request = URLRequest(url:url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: 10)
         
